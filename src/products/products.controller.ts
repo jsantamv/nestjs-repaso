@@ -10,10 +10,7 @@ export class ProductsController {
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
     
-    return {
-      "message": createProductDto,
-    }
-    //return this.productsService.create(createProductDto);
+    return this.productsService.create(createProductDto);
   }
 
   @Get()
@@ -23,7 +20,7 @@ export class ProductsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+    return this.productsService.findOne(id);
   }
 
   @Patch(':id')
