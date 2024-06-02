@@ -46,6 +46,14 @@ export class ProductsService {
   }
 
   remove(id: string) {
-    return `This action removes a #${id} product`;
+
+    const product =  this.findOne(id);
+
+    this.products = this.products.filter(product => product.id !== id);
+
+    return {
+      message: `Product with Id ${id} has been deleted successfully`,
+      product
+    }
   }
 }
